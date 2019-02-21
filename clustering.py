@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import json
 import re
+import csv
 from scipy.spatial.distance import hamming
 from sklearn.cluster import KMeans 
 """
@@ -135,9 +136,8 @@ def n_cluster(vect, n_min = 5, n_max = 0, n_point = 5):
 # bike stations.
 # =============================================================================
 
-
 #read json file
-print("== 1/6 Read data")
+print("== 1/7 Read data")
 file = input("Json file:")
 #file = 'Brisbane_CityBike.json'
 with open(file) as f:
@@ -145,7 +145,7 @@ with open(file) as f:
 
 
 # get the list of all appeared road names
-print("== 2/6 Find all appeared road names")
+print("== 2/7 Find all appeared road names")
 list_roads = []
 for i in range(len(data)):
     roads = data[i]['address']
@@ -159,23 +159,39 @@ list_roads = list(set(list_roads))
 list_roads = [x for x in list_roads if x != '']
 
 #vectorize address
-print("== 3/6 Vectorize address")
+print("== 3/7 Vectorize address")
 vect = vectorizer(data, list_roads)
 
 #determine n_cluster
-print("== 4/6 Determine n_cluster")
+print("== 4/7 Determine n_cluster")
 if (auto):
     n_cluster = n_cluster(vect, n_min, n_max, n_point)
 
 
-print("== 5/6 Clustering")
+print("== 5/7 Clustering")
 model = KMeans(n_cluster)
 df = pd.DataFrame.from_dict(data)
 df['label'] = model.fit_predict(vect)
-df = df.drop("roads", 1)
-result = df.sort_values("label")
+
+#find center of each cluster
+print("== 6/7 Find centers")
+centers = []
+for i in range(n_cluster):
+    lst = df[df.label == i]['roads'].tolist()
+    cluster_data = [x for j in lst for x in j]
+    center = max(set(cluster_data), key=cluster_data.count)
+    if center == "":
+        center = lst[0][0]
+    centers.append(center)
 
 
 #write result to csv files
-print("== 6/6 Output")
+print("== 7/7 Output")
+with open('centers.txt', 'w') as f:
+    i = 0
+    for item in centers:
+        f.write("%d\t%s\n" % (i,item))
+        i = i+1
+
+result = df.drop("roads", 1).sort_values("label")
 result.to_csv("result.csv")
