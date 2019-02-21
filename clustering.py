@@ -4,6 +4,13 @@ Created on Thu Feb 21 18:22:07 2019
 
 @author: Hong
 """
+import pandas as pd
+import numpy as np
+import json
+import re
+from scipy.spatial.distance import hamming
+from sklearn.cluster import KMeans 
+
 
 def vectorizer(data, list_roads):
     vect = pd.DataFrame()
