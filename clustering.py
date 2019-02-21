@@ -30,7 +30,7 @@ n_point:
     how many point in each cluster, default value is 5
 """
 auto=True
-n_min = 5
+n_min = 1
 n_max = 0
 n_point = 5
 n_cluster = 5
@@ -77,7 +77,7 @@ def vectorizer(data, list_roads):
     return vect
 
 
-def n_cluster(vect, n_min = 5, n_max = 0, n_point = 5):
+def n_cluster(vect, n_min = 1, n_max = 0, n_point = 5):
     """
     Choose the best number of cluster in given(or default) range
     
@@ -86,7 +86,7 @@ def n_cluster(vect, n_min = 5, n_max = 0, n_point = 5):
     vect : DataFrame
         The matix of all address in data.
     n_min : int
-        minimum number of clusters, default value is 5
+        minimum number of clusters, default value is 1
 
     n_max: int 
         maximum number of clusters, default value is number of data/number of 
