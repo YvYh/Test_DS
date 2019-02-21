@@ -1,59 +1,60 @@
-# Test_DS
+# Test_DS  
 
-    <span class="hljs-variable">@author:</span> Hong YU
-    `</pre>
+@ Author: Hong YU
 
-    * * *
 
-    ## Description:
+## Description:
 
-    ### Data :
+### Data :
 
-    Static geographical information of CityBike‘s stations in Brisbane (“Brisbane_CityBike.json”)
+Static geographical information of CityBike‘s stations in Brisbane (“Brisbane_CityBike.json”)
 
-    ### Instructions:
+### Instructions:
 
-    Propose a script to perform a clustering based on either the location or characteristics of bike stations. 
-    The code should be launched by a UNIX like command. It should be developed as close as a real industrialized process (well documented, parameters easily modifiable, readable logging, etc.).
+Propose a script to perform a clustering based on either the location or characteristics of bike stations. 
+The code should be launched by a UNIX like command. It should be developed as close as a real industrialized process (well documented, parameters easily modifiable, readable logging, etc.).
 
-    ### Languages :
+### Languages :
 
-    Python3
+Python3
 
-    ### Deliveries :
+### Deliveries :
 
-*   **Code**: A zip file containing all your code or a link to a Github repository
-*   **Readme**: command line to launch the job, and short description of your program
-*   **Output**: directory with the clustering result
+- **Code**: A zip file containing all your code or a link to a Github repository
+- **Readme**: command line to launch the job, and short description of your program
+- **Output**: directory with the clustering result
 
-    * * *
+---
 
-    ## clustering.py
+## clustering.py
 
-    Perform a **k-means** clustering based on the address of bike stations.
-    Firstly, separate road names in each addree of station.
-    Then find out all appeared road names in this json file.
-    Before clustering, translate the address to a one-hot vector.
-    The number of cluters can be:
+Perform a **k-means** clustering based on the address of bike stations.
+Firstly, separate road names in each addree of station, then find out all appeared road names in this json file.
+Before clustering, translate the address to a one-hot vector.
 
-*   defined by user: **`n_cluster`**
-*   determined automatically when **`auto=True`**:
 
-        *   in range of given minimum and maximum number of cluster  **`n_min, n_max`**
-    *   in range of minimum **`n_min`** and maximum number of cluster where the maximum is the largest number possible according to the defined number of data in each cluster **`n_point`**
-    *   in default range (1, number of data/5)*   **n_cluster** is choosen when the sum of inner-cluster distance comes to a low point and foloowed by the largest increase
+The number of cluters can be:
 
-    ### Input:
+- defined by user: **`n_cluster`**
+- determined automatically when **`auto=True`**:
 
-*   path of json file
+    - in range of given minimum and maximum number of cluster  **`n_min, n_max`**
+    - in range of minimum **`n_min`** and maximum number of cluster where the maximum is the largest number possible according to the defined number of data in each cluster **`n_point`**
+    - in default range (1, number of data/5)   
+**n_cluster** is choosen when the sum of inner-cluster distance comes to a low point and foloowed by the largest increase
 
-    ### Usage:
+### Input:
 
-    <pre>`<span class="hljs-keyword">python3</span> clustering.<span class="hljs-keyword">py</span>
+- path of json file
+
+### Usage:
+
+    python3 clustering.py
+    >> Json file: Brisbane_CityBike.json
 
 ### Functions:
 
-##### - vectorize
+#### - vectorize
 
 Creat one-hot vector for each address in the data
 
@@ -66,7 +67,7 @@ Creat one-hot vector for each address in the data
 
 `vect` : The matix of all address in data.
 
-##### - n_cluster
+#### - n_cluster
 
 Choose the best number of cluster in given(or default) range
 
