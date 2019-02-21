@@ -43,14 +43,22 @@ The number of cluters can be:
     - in default range (1, number of data/5)   
 **n_cluster** is choosen when the sum of inner-cluster distance comes to a low point and foloowed by the largest increase
 
-### Input:
-
-- path of json file
 
 ### Usage:
 
     python3 clustering.py
     >> Json file: Brisbane_CityBike.json
+
+### Input:
+
+- path of json file
+
+### Output:
+
+- result.csv  
+A csv file which contains original data and its label of cluster  
+- center.txt  
+A txt file which contains centers of each cluster  
 
 ### Functions:
 
