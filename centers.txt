@@ -1,0 +1,31 @@
+0	Coronation Dr
+1	Ann St
+2	Albert St
+3	Montague Rd
+4	Brunswick St
+5	Queen St
+6	Main St
+7	Albert St Mall
+8	Roma St
+9	Ernest St
+10	Melbourne St
+11	Vulture St
+12	Hardgrave Rd
+13	Macquarie St
+14	Commercial Rd
+15	Wickham St
+16	Edward St
+17	James St
+18	Sylvan Rd
+19	George St
+20	Vernon Tce
+21	Annerley Rd
+22	Park Rd
+23	Gardens Point Rd
+24	Lower River Tce
+25	Sandford St
+26	Turbot St
+27	WATERLOO ST
+28	O'Connell St
+29	Sir William McGregor Dr
+30	Shafston Ave
